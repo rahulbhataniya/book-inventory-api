@@ -1,12 +1,12 @@
 version: "3.9"
 services:
   app:
-    build: .
+    build: . #builds Dockerfile from current dir.
     ports:
-      - "8080:8080"
+      - "8080:8080" #maps host port to container.
     env_file:
-      - .env
-    depends_on:
+      - .env #oads DB credentials & app config securely.
+    depends_on: #makes sure Postgres starts first.
       - db
 
   db:
