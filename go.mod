@@ -1,6 +1,6 @@
 module github.com/rahulbhataniya/book-inventory-api
 
-go 1.21
+go 1.23
 
 
 require (
