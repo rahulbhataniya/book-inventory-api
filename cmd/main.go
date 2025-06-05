@@ -2,7 +2,8 @@ package main
 
 import (
 	"log"
-
+  
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/rahulbhataniya/book-inventory-api/internal/config"
 	"github.com/rahulbhataniya/book-inventory-api/internal/model"
@@ -18,7 +19,8 @@ func main() {
 	config.ConnectDB()
 	config.DB.AutoMigrate(&model.Book{})
 
-	r := routes.SetupRouter()
+	r := gin.Default()
+	routes.RegisterRoutes(r)
 
 	if err := r.Run(":8080"); err != nil {
 		log.Fatal("Server failed:", err)
